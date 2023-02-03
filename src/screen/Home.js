@@ -1,4 +1,13 @@
-import {View, Text, Button, Alert, FlatList, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  Alert,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Loading from '../components/Loading';
@@ -6,12 +15,24 @@ import auth from '@react-native-firebase/auth';
 import axios from 'axios';
 import ArticleCard from '../components/ArticleCard';
 import Category from '../components/Category';
+import Profile from '../components/Profile';
+
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 
+HeaderButton = ({setProfileToggle, profileToggle}) => (
+  <TouchableOpacity onPress={()=>setProfileToggle(!profileToggle)}>
+    <Image
+      style={{width: 30, height: 30}}
+      source={{
+        uri: 'https://img.icons8.com/ios-filled/50/null/menu-rounded.png',
+      }}
+    />
+  </TouchableOpacity>
+);
 
 const categoryData = [
   {
@@ -35,6 +56,7 @@ const categoryData = [
 const Home = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profileToggle, setProfileToggle] = useState(false);
 
   const getData = async () => {
     try {
@@ -44,6 +66,7 @@ const Home = () => {
         data: {articles},
       } = await axios.get(URL);
       setData(articles);
+      console.log(articles);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -56,20 +79,18 @@ const Home = () => {
 
   const navigation = useNavigation();
 
-  const logOut = () => {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-  };
-  const warningAlert = () =>
-    Alert.alert('Warning', 'Are you sure you want to leave?', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      {text: 'Yes', onPress: () => logOut()},
-    ]);
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          setProfileToggle={setProfileToggle}
+          profileToggle={profileToggle}
+        />
+      ),
+    });
+  }, [profileToggle]);
+
+
 
   if (!loading) {
     return (
@@ -78,6 +99,8 @@ const Home = () => {
           style={{
             flex: 1,
             paddingBottom: 5,
+            // position: 'absolute',
+            zIndex: -1,
           }}>
           <View>
             <Text
@@ -115,6 +138,8 @@ const Home = () => {
             ))}
           </View>
         </View>
+        { profileToggle ? <Profile /> : ""}
+        
       </ScrollView>
     );
   } else {

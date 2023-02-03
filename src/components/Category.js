@@ -21,10 +21,10 @@ const Category = ({data}) => {
         style={{
           height: '100%',
           width: '100%',
-          justifyContent: "flex-end"
-        
+          justifyContent: "flex-end",
+
         }}
-        imageStyle={{ borderRadius: 6,}}
+        imageStyle={{ borderRadius: 6}}
         source={{
           uri: data.url,
         }}>

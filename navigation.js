@@ -23,17 +23,6 @@ LogoTitle = () => (
   </Text>
 );
 
-RightContent = () => (
-  <TouchableOpacity>
-    <Image
-      onPree
-      style={{width: 30, height: 30}}
-      source={{
-        uri: 'https://img.icons8.com/ios-filled/50/null/menu-rounded.png',
-      }}
-    />
-  </TouchableOpacity>
-);
 
 const screenOptions = {
   headerShown: true,
@@ -61,7 +50,6 @@ export const SignedInStack = () => {
           component={Home}
           options={{
             headerTitle: props => <LogoTitle />,
-            headerRight: () => <RightContent />,
           }}
         />
       </Stack.Navigator>
