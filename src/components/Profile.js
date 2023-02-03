@@ -31,6 +31,7 @@ const Profile = () => {
         position: 'absolute',
         right: 8,
         top: 5,
+        zIndex: 10,
         height: responsiveHeight(15),
         width: responsiveWidth(55),
         borderRadius: responsiveWidth(5),

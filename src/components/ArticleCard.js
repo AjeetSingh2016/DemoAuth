@@ -12,6 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
 import {
   responsiveFontSize,
+  responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 
@@ -30,16 +31,17 @@ const ArticleCard = ({articleData}) => {
     <View
       style={{
         flexDirection: 'row-reverse',
-        height: 150,
         backgroundColor: 'white',
         borderRadius: 5,
         marginTop: 10,
+        width: responsiveWidth(80),
+        height: responsiveHeight(18)
       }}>
       <View
         style={{
           flexDirection: 'column',
           height: '100%',
-          width: '65%',
+          width: '60%',
           padding: 10,
         }}>
         <TouchableOpacity
@@ -49,7 +51,7 @@ const ArticleCard = ({articleData}) => {
             style={{
               color: 'black',
               fontWeight: 'bold',
-              fontSize: responsiveFontSize(1.8),
+              fontSize: responsiveFontSize(1.7),
               textTransform: 'capitalize',
             }}>
             {articleData.title}
@@ -109,13 +111,14 @@ const ArticleCard = ({articleData}) => {
         style={{
           flexDirection: 'column',
           height: '100%',
-          width: '35%',
+          width: '40%',
           alignItems: 'center',
           justifyContent: 'center',
+        //   backgroundColor: "red"
         }}>
         <Image
           style={{
-            height: '80%',
+            height: '70%',
             aspectRatio: 1,
             borderRadius: 10,
           }}

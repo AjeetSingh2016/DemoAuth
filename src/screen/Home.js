@@ -16,6 +16,7 @@ import axios from 'axios';
 import ArticleCard from '../components/ArticleCard';
 import Category from '../components/Category';
 import Profile from '../components/Profile';
+import SideMenu from '../components/SideMenu';
 
 import {
   responsiveFontSize,
@@ -24,7 +25,21 @@ import {
 } from 'react-native-responsive-dimensions';
 
 HeaderButton = ({setProfileToggle, profileToggle}) => (
-  <TouchableOpacity onPress={()=>setProfileToggle(!profileToggle)}>
+  <TouchableOpacity
+    onPress={() => setProfileToggle(!profileToggle)}
+    style={{
+      flexDirection: 'row',
+      // backgroundColor: 'red',
+      width: 100,
+      justifyContent: 'space-around',
+      alignItems: 'center',
+    }}>
+    <Image
+      style={{width: 30, height: 30}}
+      source={{
+        uri: 'https://img.icons8.com/ios-filled/100/null/user-male-circle.png',
+      }}
+    />
     <Image
       style={{width: 30, height: 30}}
       source={{
@@ -90,57 +105,57 @@ const Home = () => {
     });
   }, [profileToggle]);
 
-
-
   if (!loading) {
     return (
-      <ScrollView style={{flex: 1}}>
-        <View
-          style={{
-            flex: 1,
-            paddingBottom: 5,
-            // position: 'absolute',
-            zIndex: -1,
-          }}>
-          <View>
-            <Text
-              style={{
-                color: 'black',
-                marginLeft: responsiveWidth(2.5),
-                marginVertical: responsiveHeight(2),
-                fontSize: responsiveFontSize(2.2),
-                fontWeight: '500',
-              }}>
-              Popular Category
-            </Text>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}>
-              {categoryData.map((item, idx) => (
-                <Category key={idx} data={item} />
-              ))}
-            </ScrollView>
-          </View>
+      <View style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
+          <View
+            style={{
+              flex: 1,
+              paddingBottom: 5,
+              // position: 'absolute',
+              zIndex: -1,
+            }}>
+            <View>
+              <Text
+                style={{
+                  color: 'black',
+                  marginLeft: responsiveWidth(2.5),
+                  marginVertical: responsiveHeight(2),
+                  fontSize: responsiveFontSize(2.2),
+                  fontWeight: '500',
+                }}>
+                Popular Category
+              </Text>
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}>
+                {categoryData.map((item, idx) => (
+                  <Category key={idx} data={item} />
+                ))}
+              </ScrollView>
+            </View>
 
-          <View style={{paddingHorizontal: responsiveWidth(2.5)}}>
-            <Text
-              style={{
-                color: 'black',
-                marginLeft: responsiveWidth(2.5),
-                marginVertical: responsiveHeight(2),
-                fontSize: responsiveFontSize(2.2),
-                fontWeight: '500',
-              }}>
-              Today's Top Picks
-            </Text>
-            {data.map((item, indx) => (
-              <ArticleCard key={indx} articleData={item} />
-            ))}
+            <View style={{paddingHorizontal: responsiveWidth(2.5)}}>
+              <Text
+                style={{
+                  color: 'black',
+                  marginLeft: responsiveWidth(2.5),
+                  marginVertical: responsiveHeight(2),
+                  fontSize: responsiveFontSize(2.2),
+                  fontWeight: '500',
+                }}>
+                Today's Top Picks
+              </Text>
+              {data.map((item, indx) => (
+                <ArticleCard key={indx} articleData={item} />
+              ))}
+            </View>
           </View>
-        </View>
-        { profileToggle ? <Profile /> : ""}
-        
-      </ScrollView>
+        </ScrollView>
+        {profileToggle ? <Profile /> : ''}
+        <SideMenu />
+      </View>
     );
   } else {
     return <Loading />;
