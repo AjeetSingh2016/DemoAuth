@@ -173,7 +173,7 @@ const LoginForm = () => {
       <Toast />
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={welcomeIcon} />
-        <Text style={styles.title}>Hey! Welcome</Text>
+        <Text style={styles.title}>Welcome back !</Text>
       </View>
 
       <View
@@ -198,7 +198,7 @@ const LoginForm = () => {
         <TouchableOpacity
           style={stylesTwo.loginBtn}
           onPress={onLogin}>
-          <Text style={stylesTwo.loginText}>Continue</Text>
+          <Text style={stylesTwo.loginText}>Log in</Text>
         </TouchableOpacity>
       </View>
 
@@ -298,9 +298,10 @@ const stylesTwo = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#272727',
+    backgroundColor: '#60AEFF',
     borderRadius: 15,
     marginTop: 20,
+    ...SHADOWS.blue
   },
   loginText: {
     color: 'white',

@@ -50,14 +50,25 @@ export const SHADOWS = {
     elevation: 7,
   },
   dark: {
-    shadowColor: COLORS.gray,
+    shadowColor: "black",
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 7,
     },
     shadowOpacity: 0.41,
     shadowRadius: 9.11,
 
-    elevation: 14,
+    elevation: 25,
+  },
+  blue: {
+    shadowColor: "#60AEFF",
+    shadowOffset: {
+      width: 2,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 25,
   },
 };

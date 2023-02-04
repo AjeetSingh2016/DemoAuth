@@ -12,20 +12,11 @@ import {
 } from 'react-native-responsive-dimensions';
 const Stack = createNativeStackNavigator();
 
-LogoTitle = () => (
-  <Text
-    style={{
-      color: 'black',
-      fontSize: responsiveFontSize(2.5),
-      fontWeight: '500',
-    }}>
-    The Globe
-  </Text>
-);
+
 
 
 const screenOptions = {
-  headerShown: true,
+  headerShown: false,
 };
 
 export const SignedOutStack = () => {

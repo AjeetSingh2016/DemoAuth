@@ -32,30 +32,7 @@ const socialService = {
     icon: 'https://img.icons8.com/color/48/null/facebook-new.png',
   },
 };
-const SocialButton = ({data, func}) => (
-  <TouchableOpacity
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      width: '85%',
-      height: 50,
-      alignItems: 'center',
-      backgroundColor: '#272727',
-      borderRadius: 8,
-      marginTop: 20,
-    }}
-    onPress={() => {
-      func();
-    }}>
-    <Image
-      style={styles.iconStyle}
-      source={{
-        uri: data.icon,
-      }}
-    />
-    <Text style={{color: 'white'}}>{data.title}</Text>
-  </TouchableOpacity>
-);
+
 
 const SignupForm = () => {
 
@@ -272,7 +249,7 @@ const stylesTwo = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#272727',
+    backgroundColor: '#60AEFF',
     borderRadius: 15,
     marginTop: 20,
   },
