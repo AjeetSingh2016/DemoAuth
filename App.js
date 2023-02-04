@@ -1,10 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import AuthNavigation from './AuthNavigation'
+import Main from './Main'
+import { Provider } from 'react-redux'
+import Store from "./src/redux/store/Store"
 
 const App = () => {
   return (
-    <AuthNavigation />
+    <Provider store={Store}>
+      <Main />
+    </Provider>
   )
 }
 

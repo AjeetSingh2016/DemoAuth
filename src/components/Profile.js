@@ -8,6 +8,7 @@ import {
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 import auth from '@react-native-firebase/auth';
+import {useDispatch, useSelector} from 'react-redux';
 
 const logOut = () => {
   auth()
@@ -24,11 +25,20 @@ const warningAlert = () =>
     {text: 'Yes', onPress: () => logOut()},
   ]);
 
-const Profile = ({setProfileToggle, profileToggle}) => {
+const Profile = () => {
+  const dispatch = useDispatch();
+  const {loading, newsData, profileToggle} = useSelector(
+    state => state.FetchData,
+  );
+
   return (
     <TouchableOpacity
-      onPress={e => {
-        setProfileToggle(!profileToggle);
+      onPress={() => {
+        if (profileToggle) {
+          dispatch({type: "CLOSE_PROFILE"});
+        } else {
+          dispatch({type: "SET_PROFILE"});
+        }
       }}
       style={{
         backgroundColor: 'rgba(0,0,0,0.7)',
